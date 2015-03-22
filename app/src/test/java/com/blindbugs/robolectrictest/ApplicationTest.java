@@ -18,7 +18,7 @@ import static org.junit.Assert.assertThat;
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
  */
-@RunWith(RobolectricTestRunner.class)
+@RunWith(RobolectricGradleTestRunner.class)
 @Config( emulateSdk = 18 )
 public class ApplicationTest extends TestCase {
 
@@ -34,11 +34,11 @@ public class ApplicationTest extends TestCase {
         // all NOK
         assert false;
     }
+@Test
 
-    @Test
     public void shouldHaveHappySmiles() throws Exception {
-        Activity mainActivity = Robolectric.buildActivity(MainActivity.class).get();//.get().getResources().getString(R.string.hello_world);
+        String hello = Robolectric.application.getString(R.string.hello_world);
 
-        assertEquals(null, "Hello world!");
+        assertEquals(hello, "Hello world!");
     }
 }
